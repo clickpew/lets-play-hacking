@@ -1,2 +1,2 @@
-# vulnhub-butts
-Walkthroughs, notes, solves for vulnhub VMs
+# vulnhub-duhnluv
+Walkthroughs, notes, solves for vulnhub VMs (https://www.vulnhub.com)
