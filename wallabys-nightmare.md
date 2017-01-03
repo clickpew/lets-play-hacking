@@ -190,4 +190,14 @@ Chain FORWARD (policy ACCEPT 0 packets, 0 bytes) pkts bytes target prot opt in o
 Chain OUTPUT (policy ACCEPT 292K packets, 24M bytes) pkts bytes target prot opt in out source destination
 ```
 
-`iptables` is dropping all connections except those performed from inside the server. So now I have to get in the server. 
+I will note that I am making a lot of assumptions at this point as to what this user has permissions to. That's just how my brain works: throwing spaghetti at walls.  From above, I see `iptables` is dropping all connections except those performed from inside the server. So now I have to get in the server. 
+
+Sudo Make Me a User
+-----------------------
+
+It's time for `ncat`! ...Or not?
+
+http://192.168.xx.xx:60080/?page=mailer&mail=nc%20-nvlp%204443%20-e%20/bin/bash
+> How you gonna use netcat so obviously. Cmon man. This is all in the logs.
+
+Alright, so I can't use `nc` or `ncat` or `netcat` in any carnation. 
