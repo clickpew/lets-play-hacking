@@ -71,3 +71,16 @@ root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin 
 ```
 
 There are users named `steven?` and `walfin` in there, also an irc daemon. Both first users listed have `/bin/bash` enabled.
+
+So let's try `/etc/shadow`...
+
+> http://192.168.x.x/?page=../../etc/shadow
+
+NOPE! I get this lovely message instead:
+
+> That's some fishy stuff you're trying there y4nd3r3_ro3 buddy. You must think Wallaby codes like a monkey! I better get to 
+> securing this SQLi though...
+
+> (Wallaby caught you trying an LFI, you gotta be sneakier! Difficulty level has increased.)
+
+And now the HTTP port has changed. :| 
