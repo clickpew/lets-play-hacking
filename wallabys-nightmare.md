@@ -84,3 +84,40 @@ NOPE! I get this lovely message instead:
 > (Wallaby caught you trying an LFI, you gotta be sneakier! Difficulty level has increased.)
 
 And now the HTTP port has changed. :| 
+
+It's ok, this is why I love `nmap` so much.
+
+```
+60080/tcp open  http    syn-ack ttl 64 Apache httpd 2.4.18 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Wallaby's Server
+```
+
+Meanwhile, at http://192.168.x.x:60080/
+
+> HOLY MOLY, this guy y4nd3r3_ro3 wants me...Glad I moved to a different port so I could work more securely!!!
+>
+> As we all know, security by obscurity is the way to go...
+
+The previous LFI has been cleaned up, and directory listings are off. So where do I go from here? The VM's web app tends to generic 404 me when I do something like "index.html", same on generic PHP files like "home.php", but gives me a custom 404 page for anything formatted like "/?page=test.php". From here I assumed their script is looking for the "/?page=" appended onto the file, so I ran `dirb` to see if there's anything common I could find:
+
+`dirb http://192.168.x.x:60080?page= /usr/share/wordlists/dirb/common.txt`
+
+From here I got some interesting results:
+ 
+``` 
++ http://192.168.x.x:60080?page=contact (CODE:200|SIZE:895)                                                                                                                   
++ http://192.168.x.x:60080?page=home (CODE:200|SIZE:1151)                                                                                                                     
++ http://192.168.x.x:60080?page=index (CODE:200|SIZE:1366)                                                                                                                    
++ http://192.168.x.x:60080?page=mailer (CODE:200|SIZE:1089) 
+```
+
+At "?page=mailer" I got some interesting results by looking at the page source:
+
+```
+<!--a href='/?page=mailer&mail=mail wallaby "message goes here"'><button type='button'>Sendmail</button-->
+    <!--Better finish implementing this so y4nd3r3_ro3
+ can send me all his loser complaints!-->
+```
