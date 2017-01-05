@@ -310,4 +310,9 @@ socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connec
 "/usr/lib/python3.5/subprocess.py", line 1551, in _execute_child)
 ```
 
-Escaping special characters doesn't work, either. Here I am in a Vulnhub VM trying to hack, and I'm having to admin instead.
+Escaping special characters doesn't work, either. I'm having to admin a broken Python install. 
+
+Some Kind of Conclusion
+-----------------------
+
+And from here, how it *should* work, is that I should be able to do `sudo -l` to check my privilege, then `sudo su - root` and look for the flag. However, since the Python bot is broken due to dependencies, I can't get it. I may try to re-download another version of this in a month and see if it's fixed.
