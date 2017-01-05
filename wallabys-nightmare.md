@@ -226,6 +226,18 @@ Muahahaha. No more block on port 6667, either.
 
 I join the IRC server using HexChat (because I'm bad and can't ever remember Irssi configs). After listing channels, I see they have `wallabyschat` open, so I join it. `wallabysbot` is in there, which must be the Sopel bot listed as a user earlier in my findings.
 
+```
+* There are 1 users and 3 invisible on 1 servers
+* 1 :channels formed
+* I have 4 clients and 0 servers
+* 4 4 :Current local users 4, max 4
+* 4 4 :Current global users 4, max 4
+* MOTD File is missing
+* y4nd3r3_ro3 sets mode +i on y4nd3r3_ro3
+* y4nd3r3_ro3 sets mode +w on y4nd3r3_ro3
+* y4nd3r3_ro3 sets mode +x on y4nd3r3_ro3
+```
+
 
 ```
 <wallabysbot> You can see more info about any of these commands by doing .help <command> (e.g. .help time)
@@ -242,3 +254,29 @@ I join the IRC server using HexChat (because I'm bad and can't ever remember Irs
 ```
 
 I have to be the Waldo. Self-actualization aside, it's looking for me to have Waldo as my nick.
+
+Combining information gathered earlier, and my `iptables` access:
+
+`waldo:x:1000:1000:waldo,,,:/home/waldo:/bin/bash`
+`ESTABLISHED - tcp 0 0 127.0.0.1:6667 127.0.0.1:43708`
+
+I'm going to try to block any internal VM connections to IRC. Yes, I had to look this up, this is how we learn. It also wasn't in the `man` page.
+
+https://www.linux-noob.com/forums/index.php?/topic/1180-how-to-block-local-users-ports-and-ips/ (don't hate me)
+
+So, time to write a rule:
+
+http://192.168.xx.xx:60080/?page=mailer&mail=sudo%20iptables%20-t%20filter%20-A%20OUTPUT%20-p%20tcp%20--dport%206667%20--match%20owner%20--uid-owner%201000%20-j%20DROP
+
+Testing to make sure it sticks:
+
+http://192.168.xx.xx:60080/?page=mailer&mail=sudo%20iptables%20-nvL
+
+```
+Chain INPUT (policy ACCEPT 35 packets, 2729 bytes) pkts bytes target prot opt in out source destination 
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes) pkts bytes target prot opt in out source destination 
+Chain OUTPUT (policy ACCEPT 84 packets, 6484 bytes) pkts bytes target prot opt in out source destination 
+50 5115 DROP tcp -- * * 0.0.0.0/0 0.0.0.0/0 tcp dpt:6667 owner UID match 1000 
+```
+
+Great success. Now to wait for `waldo` to time out of the IRC room and snipe the login.
