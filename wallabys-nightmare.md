@@ -315,4 +315,4 @@ Escaping special characters doesn't work, either. I'm having to admin a broken P
 Some Kind of Conclusion
 -----------------------
 
-And from here, how it *should* work, is that I should be able to do `sudo -l` to check my privilege, then `sudo su - root` and look for the flag. However, since the Python bot is broken due to dependencies, I can't get it. I may try to re-download another version of this in a month and see if it's fixed.
+And from here, how it *should* work, is that I should be able to do `sudo -l` to check my privilege, then `sudo su - root` and look for the flag. However, since the Python bot is broken due to dependencies, I can't get it. I may try to re-download another version of this in a month and see if it's fixed. While I'm sure there are other ways, a component of the VM being unintentionally broken took the wind out of my sails.
