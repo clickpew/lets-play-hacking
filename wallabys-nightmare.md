@@ -223,3 +223,22 @@ http://192.168.xx.xx:60080/?page=mailer&mail=sudo%20iptables%20-nvL
 > Coming Soon guys!
 
 Muahahaha. No more block on port 6667, either. 
+
+I join the IRC server using HexChat (because I'm bad and can't ever remember Irssi configs). After listing channels, I see they have `wallabyschat` open, so I join it. `wallabysbot` is in there, which must be the Sopel bot listed as a user earlier in my findings.
+
+
+```
+<wallabysbot> You can see more info about any of these commands by doing .help <command> (e.g. .help time)
+<wallabysbot> ADMIN         msg  part  me  save  quit  set  mode  join
+<wallabysbot> ADMINCHANNEL  kickban  quiet  showmask  kick  topic  unquiet  ban
+<wallabysbot>               tmask  unban
+<wallabysbot> ANNOUNCE      announce
+<wallabysbot> CORETASKS     blocks  useserviceauth
+<wallabysbot> HELP          help
+<wallabysbot> RUN           run
+
+<y4nd3r3_ro3> .run
+<wallabysbot> Hold on, you aren't Waldo?
+```
+
+I have to be the Waldo. Self-actualization aside, it's looking for me to have Waldo as my nick.
