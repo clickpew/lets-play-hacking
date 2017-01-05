@@ -280,3 +280,21 @@ Chain OUTPUT (policy ACCEPT 84 packets, 6484 bytes) pkts bytes target prot opt i
 ```
 
 Great success. Now to wait for `waldo` to time out of the IRC room and snipe the login.
+
+`* waldo has quit (Ping timeout: 188 seconds)`
+
+[insert HexChat settings tomfoolery here]
+
+```
+* waldo sets mode +i on waldo
+* waldo sets mode +w on waldo
+* waldo sets mode +x on waldo
+```
+
+```
+<waldo> .run
+<wallabysbot> FileNotFoundError: [Errno 2] No such file or directory: 'None' (file "/usr/lib/python3.5/subprocess.py", line 1551, in _execute_child)
+```
+
+Aha, it's a Python bot. Time to see what I can do now that I'm `waldo` through a surrogate!
+
