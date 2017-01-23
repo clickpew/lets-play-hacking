@@ -65,8 +65,28 @@ Flag data: B34rcl4ws
 
 Time to check the others, too!
 
-http://192.168.xx.xx/lukeiamyourfather/ has only an image of Tommy Callahan flipping me off with the skeleton hand. Classic. Anything in it?
+http://192.168.xx.xx/lukeiamyourfather/ has only an image of Tommy Callahan flipping me off with the skeleton hand. Classic. Also noted that indexing of the folder is allowed. Anything in the image, though?
 
 `identify -verbose tmf.jpg|grep -i exif`
 
-Hm, no exif data.
+Hm, no exif data. And now Apache isn't responding? So, I just rebooted the VM. You're not my supervisor.
+
+After some review, all the images are normal, with nothing hidden. I'm probably just focusing too hard on that. Good movie memories, though!
+
+
+Not Really Redundant
+--------------------
+Looking back at earlier `nmap` results, it shows Apache running on two ports. Why? What's on `:8008`?
+
+http://192.168.xx.xx:8008
+
+> This is only for Nick's super secret stuff. If you don't know where to go from
+> here, you're not sup3rl33t enough.
+> 
+> Leave now!
+> 
+> Only me and Steve Jobs are allowed to look at this stuff.
+> 
+> Lol
+> 
+> -Nick
