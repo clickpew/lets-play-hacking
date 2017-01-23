@@ -108,9 +108,12 @@ See Nick in IT for assistance.
 <!--Comment from Richard: can you give me access too? Big Tom's the only one w/password-->
 <!--Comment from Nick: Yeah yeah, my processor can only handle one command at a time-->
 <!--Comment from Richard: please, I'll ask nicely-->
-<!--Comment from Nick: I will set you up with admin access *if* you tell Tom to stop storing important information in the company blog-->
+<!--Comment from Nick: I will set you up with admin access *if* you tell Tom to stop storing important information in the
+company blog-->
 <!--Comment from Richard: Deal.  Where's the blog again?-->
-<!--Comment from Nick: Seriously? You losers are hopeless. We hid it in a folder named after the place you noticed after you and Tom Jr. had your big fight. You know, where you cracked him over the head with a board. It's here if you don't remember: https://www.youtube.com/watch?v=VUxOd4CszJ8--> 
+<!--Comment from Nick: Seriously? You losers are hopeless. We hid it in a folder named after the place you noticed after you
+and Tom Jr. had your big fight. You know, where you cracked him over the head with a board. It's here if you don't remember:
+https://www.youtube.com/watch?v=VUxOd4CszJ8--> 
 <!--Comment from Richard: Ah! How could I forget?  Thanks-->
 ```
 Two clues here:
