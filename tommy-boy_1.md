@@ -71,8 +71,7 @@ http://192.168.xx.xx/lukeiamyourfather/ has only an image of Tommy Callahan flip
 
 Hm, no exif data. And now Apache isn't responding? So, I just rebooted the VM. You're not my supervisor.
 
-After some review, all the images are normal, with nothing hidden. I'm probably just focusing too hard on that. Good movie memories, though!
-
+After some review, all the subfolder images are normal, with nothing I could find hidden. I'm probably just focusing too hard on that. Good movie memories, though!
 
 Not Really Redundant
 --------------------
@@ -90,3 +89,31 @@ http://192.168.xx.xx:8008
 > Lol
 > 
 > -Nick
+
+Nothing in source here.
+
+But what about on that first page I didn't check?
+
+```
+<html>
+<title>Welcome to Callahan Auto</title>
+<body>
+<H1><center>Welcome to Callahan Auto!</center></H1>
+<font color="FF3339"><H2>SYSTEM ERROR!</H2></font>
+If your'e reading this, the Callahan Auto customer ordering system is down.  Please restore the backup copy immediately.
+<p>
+See Nick in IT for assistance.
+</html>
+<!--Comment from Nick: backup copy is in Big Tom's home folder-->
+<!--Comment from Richard: can you give me access too? Big Tom's the only one w/password-->
+<!--Comment from Nick: Yeah yeah, my processor can only handle one command at a time-->
+<!--Comment from Richard: please, I'll ask nicely-->
+<!--Comment from Nick: I will set you up with admin access *if* you tell Tom to stop storing important information in the company blog-->
+<!--Comment from Richard: Deal.  Where's the blog again?-->
+<!--Comment from Nick: Seriously? You losers are hopeless. We hid it in a folder named after the place you noticed after you and Tom Jr. had your big fight. You know, where you cracked him over the head with a board. It's here if you don't remember: https://www.youtube.com/watch?v=VUxOd4CszJ8--> 
+<!--Comment from Richard: Ah! How could I forget?  Thanks-->
+```
+Two clues here:
+
+* storing important information in the company blog
+* https://www.youtube.com/watch?v=VUxOd4CszJ8
