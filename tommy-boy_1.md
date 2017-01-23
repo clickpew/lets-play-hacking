@@ -162,3 +162,19 @@ User Comment                    : ce154b5a8e59c89732bc25d6a2e6b90b
 ```
 
 That's better. Time to crack this hash!
+
+Did I Catch a "Niner" in There?
+-------------------------------
+
+`~# john --wordlist=/usr/share/wordlists/rockyou.txt --rules richard.txt --format=Raw-MD5`
+```
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-MD5 [MD5 128/128 AVX 4x3])
+Press 'q' or Ctrl-C to abort, almost any other key for status
+spanky           (?)
+1g 0:00:00:00 DONE (2017-01-23 14:19) 25.00g/s 34500p/s 34500c/s 34500C/s lacoste..spanky
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+```
+
+That was fast! Looks like it's `spanky`. Oh Richard...
