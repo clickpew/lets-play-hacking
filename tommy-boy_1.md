@@ -11,6 +11,10 @@ Source: https://www.vulnhub.com/entry/tommy-boy-1%2C157/
 
 Of course I had to pick this one, I loved this movie as a kid. After some fiddling on my testing VM, I'll be ready to start recon.
 
+**Note:** 
+Some parts of the CTF took a bit to load, as it was trying to reach external assets while still connected to my 
+local network. Just a heads-up if you're experiencing the same thing.
+
 
 Brothers Don't Complete the Handshake, Brothers Gotta Hug
 ---------------------------------------------------------
@@ -120,3 +124,41 @@ Two clues here:
 
 * storing important information in the company blog
 * https://www.youtube.com/watch?v=VUxOd4CszJ8
+
+Well, the 2nd point brings us to the epic battle in front of... Prehistoric Forest. I assumed the URL was
+http://192.168.xx.xx/prehistoricforest, and that worked! 
+
+There's a lone comment at the top post:
+
+```
+richard says:	
+July 7, 2016 at 6:04 pm
+
+Hey numbnuts, look at the /richard folder on this server. I’m sure that picture will jog your memory.
+
+Since you have a small brain: see up top in the address bar thingy? Erase “/prehistoricforest” and put “/richard” there instead.
+```
+
+"Richard, what'd'ja do???"
+
+Here I see http://192.168.xx.xx/richard/shockedrichard.jpg has classic Richard about to hit a deer. Out of futility, I tried to check exif data once more:
+
+`~# identify -verbose Downloads/shockedrichard.jpg|grep -i exif`
+```
+    exif:Copyright: Copyright .. 1995 Paramount Pictures Corporation. Credit: .. 1995 Paramount Pictures / Courtesy: Pyxurz.
+    exif:ExifImageLength: 1029
+    exif:ExifImageWidth: 1600
+    exif:ExifOffset: 164
+    exif:ExifVersion: 48, 50, 50, 48
+    exif:Software: Google
+    exif:UserComment: 65, 83, 67, 73, 73, 0, 0, 0, 99, 101, 49, 53, 52, 98, 53, 97, 56, 101, 53, 57, 99, 56, 57, 55, 51, 50, 98, 99, 50, 53, 100, 54, 97, 50, 101, 54, 98, 57, 48, 98
+    Profile-exif: 264 bytes
+```
+Hm, that comment isn't too easy to read. Let me try `exiftool`:
+
+`~# exiftool Downloads/shockedrichard.jpg|grep -i comment`
+```
+User Comment                    : ce154b5a8e59c89732bc25d6a2e6b90b
+```
+
+That's better. Time to crack this hash!
