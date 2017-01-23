@@ -136,12 +136,14 @@ July 7, 2016 at 6:04 pm
 
 Hey numbnuts, look at the /richard folder on this server. I’m sure that picture will jog your memory.
 
-Since you have a small brain: see up top in the address bar thingy? Erase “/prehistoricforest” and put “/richard” there instead.
+Since you have a small brain: see up top in the address bar thingy? Erase “/prehistoricforest” and put “/richard” 
+there instead.
 ```
 
 "Richard, what'd'ja do???"
 
-Here I see http://192.168.xx.xx/richard/shockedrichard.jpg has classic Richard about to hit a deer. Out of futility, I tried to check exif data once more:
+Here I see http://192.168.xx.xx/richard/shockedrichard.jpg has classic Richard about to hit a deer. Out of futility, 
+I tried to check exif data once more:
 
 `~# identify -verbose Downloads/shockedrichard.jpg|grep -i exif`
 ```
@@ -151,7 +153,8 @@ Here I see http://192.168.xx.xx/richard/shockedrichard.jpg has classic Richard a
     exif:ExifOffset: 164
     exif:ExifVersion: 48, 50, 50, 48
     exif:Software: Google
-    exif:UserComment: 65, 83, 67, 73, 73, 0, 0, 0, 99, 101, 49, 53, 52, 98, 53, 97, 56, 101, 53, 57, 99, 56, 57, 55, 51, 50, 98, 99, 50, 53, 100, 54, 97, 50, 101, 54, 98, 57, 48, 98
+    exif:UserComment: 65, 83, 67, 73, 73, 0, 0, 0, 99, 101, 49, 53, 52, 98, 53, 97, 56, 101, 53, 57, 99, 56, 
+    57, 55, 51, 50, 98, 99, 50, 53, 100, 54, 97, 50, 101, 54, 98, 57, 48, 98
     Profile-exif: 264 bytes
 ```
 Hm, that comment isn't too easy to read. Let me try `exiftool`:
@@ -183,13 +186,16 @@ Not going to put all the post contents for brevity, but here are relevant portio
 
 **Backups:**
 ```
-But, thanks to *me* there’s a backup called callahanbak.bak that you can just rename to index.html and everything will be good again.
+But, thanks to *me* there’s a backup called callahanbak.bak that you can just rename to index.html and everything will 
+be good again.
 
     IMPORTANT: You have to do this under Big Tom’s account via SSH to perform this restore. 
 ```
 **FTP?:**
 ```
-Basically I couldn’t get it running on the standard port, so I put it on a port that most scanners would get exhausted looking for.  And to make matters more fun, the server seems to go online at the top of the hour for 15 minutes, then down for 15 minutes, then up again, then down again.
+Basically I couldn’t get it running on the standard port, so I put it on a port that most scanners would get exhausted 
+looking for.  And to make matters more fun, the server seems to go online at the top of the hour for 15 minutes, then 
+down for 15 minutes, then up again, then down again.
 ```
 Oh good, more "security through obscurity".
 
