@@ -206,7 +206,7 @@ I just reset my account (“nickburns” in case you’re dumb and can’t remem
 
 Time to find that FTP instance!
 
-`~# nmap -vv 192.168.71.131 -p1-65535 --open`
+`~# nmap -vv 192.168.xx.xx -p1-65535 --open`
 
 ```
 Reason: 65531 resets
