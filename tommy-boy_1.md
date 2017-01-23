@@ -187,13 +187,13 @@ But, thanks to *me* there’s a backup called callahanbak.bak that you can just 
 
     IMPORTANT: You have to do this under Big Tom’s account via SSH to perform this restore. 
 ```
-**FTP?**
+**FTP?:**
 ```
 Basically I couldn’t get it running on the standard port, so I put it on a port that most scanners would get exhausted looking for.  And to make matters more fun, the server seems to go online at the top of the hour for 15 minutes, then down for 15 minutes, then up again, then down again.
 ```
 Oh good, more "security through obscurity".
 
-**Nick Burns, your company's computer guy**
+**Nick Burns, your company's computer guy:**
 ```
 I just reset my account (“nickburns” in case you’re dumb and can’t remember) to a very, VERY easy to guess password.
 ```
