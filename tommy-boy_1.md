@@ -54,7 +54,7 @@ PORT     STATE SERVICE REASON         VERSION
 |_  100024  1          49865/tcp  status
 ```
 
-There's a `robots.txt` file intentionally blocking us from a `.txt` file for a flag. Time to check it out by going to http://192.168.xx.xx/flag-numero-uno.txt.
+There's a `robots.txt` file intentionally blocking a `.txt` file for a flag. Time to check it out by going to http://192.168.xx.xx/flag-numero-uno.txt.
 
 ```
 This is the first of five flags in the Callhan Auto server.  You'll need them all to unlock
@@ -62,3 +62,11 @@ the final treasure and fully consider the VM pwned!
 
 Flag data: B34rcl4ws
 ```
+
+Time to check the others, too!
+
+http://192.168.xx.xx/lukeiamyourfather/ has only an image of Tommy Callahan flipping me off with the skeleton hand. Classic. Anything in it?
+
+`identify -verbose tmf.jpg|grep -i exif`
+
+Hm, no exif data.
