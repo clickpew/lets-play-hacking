@@ -178,3 +178,35 @@ Session completed
 ```
 
 That was fast! Looks like it's `spanky`. Oh Richard...
+
+Not going to put all the post contents for brevity, but here are relevant portions.
+
+**Backups:**
+```
+But, thanks to *me* there’s a backup called callahanbak.bak that you can just rename to index.html and everything will be good again.
+
+    IMPORTANT: You have to do this under Big Tom’s account via SSH to perform this restore. 
+```
+**FTP?**
+```
+Basically I couldn’t get it running on the standard port, so I put it on a port that most scanners would get exhausted looking for.  And to make matters more fun, the server seems to go online at the top of the hour for 15 minutes, then down for 15 minutes, then up again, then down again.
+```
+Oh good, more "security through obscurity".
+
+**Nick Burns, your company's computer guy**
+```
+I just reset my account (“nickburns” in case you’re dumb and can’t remember) to a very, VERY easy to guess password.
+```
+
+Time to find that FTP instance!
+
+`~# nmap -vv 192.168.71.131 -p1-65535 --open`
+
+```
+Reason: 65531 resets
+PORT      STATE SERVICE REASON
+22/tcp    open  ssh     syn-ack ttl 64
+80/tcp    open  http    syn-ack ttl 64
+8008/tcp  open  http    syn-ack ttl 64
+65534/tcp open  unknown syn-ack ttl 64
+```
