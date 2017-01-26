@@ -216,3 +216,11 @@ PORT      STATE SERVICE REASON
 8008/tcp  open  http    syn-ack ttl 64
 65534/tcp open  unknown syn-ack ttl 64
 ```
+
+Loaded up `msfconsole` and input these previous variables into `auxiliary/fuzzers/ftp/ftp_pre_post`:
+
+```
+   RHOSTS            192.168.xx.xx   yes       The target address range or CIDR identifier
+   RPORT             65534            yes       The target port
+   USER              nickburns        no        Username
+```
