@@ -224,3 +224,18 @@ Loaded up `msfconsole` and input these previous variables into `auxiliary/fuzzer
    RPORT             65534            yes       The target port
    USER              nickburns        no        Username
 ```
+
+(Btw, unsure if FTP is up? Just check real quick with `telnet`!)
+```
+~# telnet 192.168.xx.xx 65534
+Trying 192.168.xx.xx...
+telnet: Unable to connect to remote host: Connection refused
+```
+^ *NARP*
+```
+~# telnet 192.168.xx.xx 65534
+Trying 192.168.xx.xx...
+Connected to 192.168.xx.xx.
+Escape character is '^]'.
+```
+^ *YARP*
