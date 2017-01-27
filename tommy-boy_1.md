@@ -204,6 +204,8 @@ Oh good, more "security through obscurity".
 I just reset my account (“nickburns” in case you’re dumb and can’t remember) to a very, VERY easy to guess password.
 ```
 
+FTP = Freshener: Trees of Pine
+------------------------------
 Time to find that FTP instance!
 
 `~# nmap -vv 192.168.xx.xx -p1-65535 --open`
@@ -215,14 +217,6 @@ PORT      STATE SERVICE REASON
 80/tcp    open  http    syn-ack ttl 64
 8008/tcp  open  http    syn-ack ttl 64
 65534/tcp open  unknown syn-ack ttl 64
-```
-
-Loaded up `msfconsole` and input these previous variables into `auxiliary/fuzzers/ftp/ftp_pre_post`:
-
-```
-   RHOSTS            192.168.xx.xx   yes       The target address range or CIDR identifier
-   RPORT             65534            yes       The target port
-   USER              nickburns        no        Username
 ```
 
 (Btw, unsure if FTP is up? Just check real quick with `telnet`!)
@@ -239,3 +233,5 @@ Connected to 192.168.xx.xx.
 Escape character is '^]'.
 ```
 ^ *YARP*
+
+Ok, this looks like it'll be a job for `hydra`. Time to get that set up.
