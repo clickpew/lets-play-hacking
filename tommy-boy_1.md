@@ -235,8 +235,8 @@ Escape character is '^]'.
 ```
 ^ *YARP*
 
-Ok, this looks like it'll be a job for `hydra`. Time to get that set up. As a reminder, the FTP server cycles twice per hour: up for 15 minutes, and down for 15.
+Normally it'd be a job for `hydra`, but since the FTP server cycles twice per hour (up for 15 minutes, and down for 15), that sounds very very annoying.
 
 `~# hydra -l nickburns -P /usr/share/wordlists/rockyou.txt ftp://192.168.xx.xx:65534`
 
-
+Easy to guess, huh? I tried a few, and, it ends up being `nickburns`. That sounds about right.
