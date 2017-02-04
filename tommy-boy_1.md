@@ -289,7 +289,16 @@ Remembering the `:8008` landing page from earlier (haha, boob, I get jokes), I t
 http://192.168.xx.xx:8008/NickIzL33t
 
 > Nick's sup3r s3cr3t dr0pb0x - only me and Steve Jobs can see this content
+> 
 > Lol
 
+Steve Stopjobs
+---------------
+Mild hint here about switching my useragent to something Apple-related. Using a Firefox extension, I changed it to iOS
+(since it was a bit easier) and got the following:
+
+```
+
+```
 
 
