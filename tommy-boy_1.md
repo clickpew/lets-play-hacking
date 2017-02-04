@@ -239,4 +239,57 @@ Normally it'd be a job for `hydra`, but since the FTP server cycles twice per ho
 
 `~# hydra -l nickburns -P /usr/share/wordlists/rockyou.txt ftp://192.168.xx.xx:65534`
 
-Easy to guess, huh? I tried a few, and, it ends up being `nickburns`. That sounds about right.
+Easy to guess, huh? I tried a few, and, it ends up being `nickburns`. That sounds about right. 
+
+```
+230 User nickburns logged in
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+200 PORT command successful
+150 Opening ASCII mode data connection for file list
+-rw-rw-r--   1 nickburns nickburns      977 Jul 15  2016 readme.txt
+ftp> get readme.txt
+local: readme.txt remote: readme.txt
+200 PORT command successful
+150 Opening BINARY mode data connection for readme.txt (977 bytes)
+226 Transfer complete
+977 bytes received in 0.00 secs (422.1688 kB/s)
+ftp> quit
+221 Goodbye.
+
+[pause]
+
+~# cat readme.txt 
+To my replacement:
+
+If you're reading this, you have the unfortunate job of taking over IT responsibilities
+from me here at Callahan Auto.  HAHAHAHAHAAH! SUCKER!  This is the worst job ever!  You'll be
+surrounded by stupid monkeys all day who can barely hit Ctrl+P and wouldn't know a fax machine
+from a flame thrower!
+
+Anyway I'm not completely without mercy.  There's a subfolder called "NickIzL33t" on this server
+somewhere. I used it as my personal dropbox on the company's dime for years.  Heh. LOL.
+I cleaned it out (no naughty pix for you!) but if you need a place to dump stuff that you want
+to look at on your phone later, consider that folder my gift to you.
+
+Oh by the way, Big Tom's a moron and always forgets his passwords and so I made an encrypted
+.zip of his passwords and put them in the "NickIzL33t" folder as well.  But guess what?
+He always forgets THAT password as well.  Luckily I'm a nice guy and left him a hint sheet.
+
+Good luck, schmuck!
+
+LOL.
+
+-Nick
+```
+
+Remembering the `:8008` landing page from earlier (haha, boob, I get jokes), I try to append that l33tsp34k folder to the address, and I get this:
+
+http://192.168.xx.xx:8008/NickIzL33t
+
+> Nick's sup3r s3cr3t dr0pb0x - only me and Steve Jobs can see this content
+> Lol
+
+
+
